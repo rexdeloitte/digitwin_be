@@ -1,5 +1,6 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
+const fileupload = require("express-fileupload");
 const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
@@ -11,7 +12,7 @@ const NODE_ENV = process.env.NODE_ENV;
 
 const app = express();
 const PORT = config.PORT;
-const DB_URL = config.DB_URL;
+// const DB_URL = config.DB_URL;
 
 const corsOptions = {
   origin: "*",
@@ -36,7 +37,8 @@ const corsOptions = {
 // }
 
 /** Middleware configuration **/
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+app.use(fileupload());
 // app.use(bodyParser.urlencoded({ extend: true }));
 app.use(morgan("dev"));
 app.use(cors(corsOptions));
